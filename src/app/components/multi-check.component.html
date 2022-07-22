@@ -1,0 +1,17 @@
+<div class="div-margin">
+    <div class="panel panel-default">
+        <div class="panel-heading">{{label}}</div>
+        <div class="panel-body">
+            <div columnWidth [noOfColumns]="columns">
+                <ng-container *ngFor="let option of options">
+                    <div class="display-block">
+                        <input type="checkbox" [id]="option.label" [name]="option.label"
+                            [checked]="calculateCheckedState(option)" [value]="option.value"
+                            (click)="handleCheckBoxStateChange(option)" />
+                        {{option.label}}
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>
