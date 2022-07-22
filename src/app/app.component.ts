@@ -9,6 +9,7 @@ const defaultValues: string[] = [];
   styleUrls: ['./app.component.less'],
 })
 export class AppComponent {
+  
   options: Option[] = [
     { label: 'aaa', value: '111' },
     { label: 'bbb', value: '222' },
