@@ -39,7 +39,7 @@ export class MultiCheckComponent implements AfterViewInit {
     this.options?.length > 0 ?
       this.options?.unshift({ label: AppGlobalConstants.SELECTALLTEXT, value: AppGlobalConstants.SELECTALLVALUE }) :
       '';
-    const tempOptions = new Set(this.options); //to remove any duplicate values
+    const tempOptions = new Set(this.options); //to check &  remove any duplicate values that may come from app component
     this.options = [];
     this.options = Array.from(tempOptions);
   }
@@ -48,10 +48,13 @@ export class MultiCheckComponent implements AfterViewInit {
     this.emitOnCheckBoxSelection();
   }
   modifyOnCheckBoxSelection(option: Option): void {
+    // to check if 'Select All' is checked or un checked 
     if (option?.value === AppGlobalConstants.SELECTALLVALUE) {
       this.values = (this.values?.length === this.options?.length - 1) ? [] : this.options?.map(option => option.value);
+      //to add newly checked checked box
     } else if (!this.values?.includes(option.value)) {
       this.values?.push(option.value);
+      //to un check the previously checked check box
     } else {
       this.values = this.values?.filter(selectedValue => selectedValue !== option.value);
     }
